@@ -10,3 +10,9 @@ def home(request):
 def make_rule_change(request):
     return render(request, "RISAPP/makerulechange.html", {})
 
+def view_approved_rule_changes(request):
+    return render(request, "RISAPP/viewapprovedchanges.html", {})
+
+def view_rule_changes(request):
+    return render(request, "RISAPP/viewrulechanges.html", {})
+

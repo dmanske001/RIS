@@ -22,4 +22,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('home/', views.home, name='home'),
     path('makerulechangerequest/', views.make_rule_change, name='makerulechangerequest'),
+    path('viewapprovedchanges/', views.view_approved_rule_changes, name='viewapprovedrulechanges'),
+    path('viewrulechanges/', views.view_rule_changes, name='viewrulechanges'),
 ]
