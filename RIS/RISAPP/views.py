@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from django.db import models
+from .models import Category, Rule, Rule_Change
+
 
 # Create your views here.
 def index(request):
+
     return render(request, "RISAPP/index.html", {})
 
 def home(request):
@@ -15,4 +19,8 @@ def view_approved_rule_changes(request):
 
 def view_rule_changes(request):
     return render(request, "RISAPP/viewrulechanges.html", {})
+
+
+
+
 
