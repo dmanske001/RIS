@@ -1,10 +1,4 @@
 from django.shortcuts import render
-<<<<<<< Updated upstream
-
-# Create your views here.
-def index(request):
-    return render(request, "RISAPP/index.html", {})
-=======
 from django.db import models
 from .models import Category, Rule, Rule_Change
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -31,4 +25,3 @@ def view_rule_changes(request):
 
 
 
->>>>>>> Stashed changes
