@@ -34,9 +34,13 @@ class Rule(models.Model):
         return str(self.name)
 
 class Rule_Change(models.Model):
-    date_created = models.DateField
-    date_decided = models.DateField
-    rule_status = models.CharField(max_length=8, choices=STATUSES, default='pending')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None, blank=True, null=True)
+    rule = models.ForeignKey(Rule, on_delete=models.CASCADE, default=None, blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, blank=True, null=True)
+    date_created = models.DateField(blank=False, auto_now_add=False, default=None, null=True)
+    date_decided = models.DateField(blank=False, auto_now_add=False, default=None, null=True)
+    rule_description = models.CharField(max_length=200, default=None, null=True)
+    rule_status = models.CharField(max_length=8, choices=STATUSES, default='pending', null=True)
 
     class Meta:
         verbose_name = "rule change"
