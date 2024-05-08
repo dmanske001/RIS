@@ -5,21 +5,40 @@
     <title>Title</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+        {% if request.user.groups.all.0.name == "admin" %}
+        <button type="button">
+            <a href="../makerulechangerequest">Make Rule Change Request</a>
+        </button>
 
-    <button type="button">
-        <a href="../makerulechangerequest">Make Rule Change Request</a>
-    </button>
+        <button type="button">
+            <a href="../viewapprovedchanges">View Approved Rule Changes</a>
+        </button>
 
-    <button type="button">
-        <a href="../viewapprovedchanges">View Approved Rule Changes</a>
-    </button>
-
-    <button type="button">
-        <a href="../viewrulechanges">View Rule Change Requests</a>
-    </button>
+        <button type="button">
+            <a href="../viewrulechanges">View Rule Change Requests</a>
+        </button>
+        {% endif %}
 
 
+        {% if request.user.groups.all.0.name == "developer" %}
+        <button type="button">
+            <a href="../makerulechangerequest">Make Rule Change Request</a>
+        </button>
 
+        <button type="button">
+            <a href="../viewapprovedchanges">View Approved Rule Changes</a>
+        </button>
+        {% endif %}
+
+        {% if request.user.groups.all.0.name == "game tester" %}
+        <button type="button">
+            <a href="../makerulechangerequest">Make Rule Change Request</a>
+        </button>
+
+        {% endif %}
+
+    {% endif %}
 
 
 </body>
