@@ -17,8 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+<<<<<<< Updated upstream
     path('admin/', admin.site.urls),
     path('', views.index, name='index')
+=======
+    path('', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('home/', views.home, name='home'),
+    path('makerulechangerequest/', views.make_rule_change, name='makerulechangerequest'),
+    path('viewapprovedchanges/', views.view_approved_rule_changes, name='viewapprovedrulechanges'),
+    path('viewrulechanges/', views.view_rule_changes, name='viewrulechanges'),
+>>>>>>> Stashed changes
 ]
