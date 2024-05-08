@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
+    {% for rule_change in rulechangesdata %}
+        <tr>
+                <td>{{ rule_change.category}}</td>
+                <td>{{ rule_change.rule}}</td>
+                <td>{{ rule_change.user}}</td>
+                <td>{{ rule_change.date_created}}</td>
+                <td>{{ rule_change.date_created}}</td>
+                <td>{{ rule_change.date_decided}}</td>
+                <td>{{ rule_change.rule_description}}</td>
+                <td>{{ rule_change.rule_status}}</td>
+        </tr>
+    {% endfor %}
 
 </body>
 </html>
