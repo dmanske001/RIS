@@ -4,7 +4,11 @@
         <div style="text-align: center">
         <h1 style="position: absolute; left: 50%; right: 50%">Home</h1>
         </div>
+
+        <form action="{% url 'logout' %}?next=/" method = "post">
+            {% csrf_token %}
         <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
+        </form>
 
         {% if request.user.groups.all.0.name == "admin" %}
 

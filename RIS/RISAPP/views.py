@@ -3,6 +3,7 @@ from django.db import models
 from .models import Category, Rule, Rule_Change
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import redirect
+from django.contrib.auth import logout as logouts
 
 
 # Create your views here.
@@ -21,6 +22,11 @@ def view_approved_rule_changes(request):
 def view_rule_changes(request):
     rule_change = Rule_Change.objects.all()
     return render(request, "RISAPP/viewrulechanges.html", {'rulechangesdata': rule_change})
+
+def logout(request):
+    if request.method == 'POST':
+        logouts(request)
+        return redirect('')
 
 
 
