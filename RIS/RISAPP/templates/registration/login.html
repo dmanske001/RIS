@@ -1,8 +1,9 @@
-<h2> Log In </h2>
-
+<title>Log In</title>
+<center><h2> Log In </h2>
+<img src="logo.webp">
 <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Log In</button>
 </form>
-
+</center>

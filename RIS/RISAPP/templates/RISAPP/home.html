@@ -1,45 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<title>Home</title>
     {% if user.is_authenticated %}
+        <img src="../logo.webp">,
+        <div style="text-align: center">
+        <h1 style="position: absolute; left: 50%; right: 50%">Home</h1>
+        </div>
+        <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
+
         {% if request.user.groups.all.0.name == "admin" %}
-        <button type="button">
+
+        <div style="text-align:left">
+        <button type="button" style="position: absolute; top: 25%; left: 25%">
             <a href="../makerulechangerequest">Make Rule Change Request</a>
         </button>
+        </div>
 
-        <button type="button">
+        <div style="text-align:center">
+        <button type="button" style="position: absolute; top: 50%; left: 40%; right: 40%" >
             <a href="../viewapprovedchanges">View Approved Rule Changes</a>
         </button>
+        </div>
 
-        <button type="button">
+        <div style="text-align:right">
+        <button type="button" style="position: absolute; top: 25%; right: 25%">
             <a href="../viewrulechanges">View Rule Change Requests</a>
         </button>
+        </div>
         {% endif %}
 
 
         {% if request.user.groups.all.0.name == "developer" %}
-        <button type="button">
+        <div style="text-align: left">
+        <button type="button" style="position: absolute; top: 50%; left: 25%">
             <a href="../makerulechangerequest">Make Rule Change Request</a>
         </button>
+        </div>
 
-        <button type="button">
+        <div style = "text-align: right">
+        <button type="button" style="position: absolute; top: 50%; right: 25%">
             <a href="../viewapprovedchanges">View Approved Rule Changes</a>
         </button>
+        </div>
         {% endif %}
 
         {% if request.user.groups.all.0.name == "game tester" %}
-        <button type="button">
+
+        <div style="text-align: center">
+        <button type="button" style="position: absolute; top: 50%; left: 40%; right: 40%" >
             <a href="../makerulechangerequest">Make Rule Change Request</a>
         </button>
+        </div>
 
         {% endif %}
 
     {% endif %}
 
 
-</body>
-</html>
+
