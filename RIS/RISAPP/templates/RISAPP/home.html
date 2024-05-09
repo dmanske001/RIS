@@ -15,19 +15,19 @@
 
         <div style="text-align:left">
         <button type="button" style="position: absolute; background-color: lightblue; height: 200px; width: 200px; font-size: 20px;  top: 25%; left: 25%">
-            <a href="../makerulechangerequest">Make Rule Change Request</a>
+            <a href="{% url 'makerulechangerequest' %}">Make Rule Change Request</a>
         </button>
         </div>
 
         <div style="text-align:center">
         <button type="button" style="position: absolute; background-color: lightgreen; height: 200px; width: 200px; font-size: 20px; top: 50%; left: 45%; right: 45%" >
-            <a href="../viewapprovedchanges">View Approved Rule Changes</a>
+            <a href="{% url 'viewapprovedrulechanges' %}">View Approved Rule Changes</a>
         </button>
         </div>
 
         <div style="text-align:right">
         <button type="button" style="position: absolute; background-color: lightsalmon; height: 200px; width: 200px; font-size: 20px; top: 25%; right: 25%">
-            <a href="../viewrulechanges">View Rule Change Requests</a>
+            <a href="{% url 'viewrulechanges' %}">View Rule Change Requests</a>
         </button>
         </div>
         {% endif %}
@@ -36,13 +36,13 @@
         {% if request.user.groups.all.0.name == "developer" %}
         <div style="text-align: left">
         <button type="button" style="position: absolute; background-color: lightblue; height: 200px; width: 200px; font-size: 20px;  top: 25%; left: 35%">
-            <a href="../makerulechangerequest">Make Rule Change Request</a>
+            <a href="{% url 'makerulechangerequest' %}">Make Rule Change Request</a>
         </button>
         </div>
 
         <div style = "text-align: right">
         <button type="button" style="position: absolute; background-color: lightgreen; height: 200px; width: 200px; font-size: 20px; top: 25%; right: 35%">
-            <a href="../viewapprovedchanges">View Approved Rule Changes</a>
+            <a href="{% url 'viewapprovedrulechanges' %}">View Approved Rule Changes</a>
         </button>
         </div>
         {% endif %}
@@ -51,7 +51,7 @@
 
         <div style="text-align: center">
         <button type="button" style="position: absolute; background-color: lightblue; height: 200px; width: 200px; font-size: 20px;  top: 25%; right: 47%; left: 47%">
-            <a href="../makerulechangerequest">Make Rule Change Request</a>
+            <a href="{% url 'makerulechangerequest' %}">Make Rule Change Request</a>
         </button>
         </div>
 
