@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {% for rule_change in rulechangesdata %}
+<title>View Rule Changes</title>
+
+{% if user.is_authenticated %}
+        <img src="../logo.webp">,
+        <div style="text-align: center">
+        <h1 style="left: 50%; right: 50%">View Rule Changes</h1>
+        </div>
+
+        <form action="{% url 'logout' %}?next=/" method = "post">
+            {% csrf_token %}
+        <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
+
+        {% for rule_change in rulechangesdata %}
+            <div>
         <tr>
                 <td>{{ rule_change.category}}</td>
                 <td>{{ rule_change.rule}}</td>
@@ -14,7 +20,7 @@
                 <td>{{ rule_change.rule_description}}</td>
                 <td>{{ rule_change.rule_status}}</td>
         </tr>
-    {% endfor %}
+            </div>
+        {% endfor %}
 
-</body>
-</html>
+{% endif %}
