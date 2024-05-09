@@ -39,6 +39,12 @@
                         {{ rule_change.date_created }}
                         {{ rule_change.rule_description }}
                         {{ rule_change.rule_status }}
+                        <select>
+                            <option>pending</option>
+                            <option>approve</option>
+                            <option>deny</option>
+                            <option>implement</option>
+                        </select>
         </div>
         {% endfor %}
         {% else %}
