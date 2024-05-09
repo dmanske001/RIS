@@ -19,7 +19,9 @@ def home(request):
 
 def make_rule_change(request):
     displaycategories = Category.objects.all()
-    return render(request, "RISAPP/makerulechange.html", {"Category":displaycategories})
+    displayrules = Rule.objects.all()
+
+    return render(request, "RISAPP/makerulechange.html", {"Category":displaycategories, "Rule":displayrules})
 
 
 def view_approved_rule_changes(request):
