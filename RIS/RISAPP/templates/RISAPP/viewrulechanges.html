@@ -3,12 +3,31 @@
 {% if user.is_authenticated %}
         <img src="../logo.webp">,
         <div style="text-align: center">
-        <h1 style="left: 50%; right: 50%">View Rule Changes</h1>
+        <h1 style="left: 50%; right: 50%">View Rule Change Requests</h1>
         </div>
 
         <form action="{% url 'logout' %}?next=/" method = "post">
             {% csrf_token %}
         <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
+        </form>
+
+        <div style="text-align:left">
+        <button type="button" style="position: absolute; background-color: grey; top: 25%; left: 25%; width: 100px; height: 100px">
+            <a href="../home/">Home</a>
+        </button>
+        </div>
+
+        <div style="text-align:center">
+        <button type="button" style="position: absolute; top: 25%; left: 47%; right: 47%; background-color: lightblue; width: 100px; height: 100px;">
+            <a href="../makerulechangerequest">Make Rule Change Request</a>
+        </button>
+        </div>
+
+        <div style="text-align:right">
+        <button type="button" style="position: absolute; background-color: lightgreen; height: 100px; width: 100px; top: 25%; right: 25%">
+            <a href="../viewapprovedchanges">View Approved Rule Changes</a>
+        </button>
+        </div>
 
         {% for rule_change in rulechangesdata %}
             <div>
