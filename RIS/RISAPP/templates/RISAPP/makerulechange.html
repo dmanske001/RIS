@@ -3,7 +3,7 @@
 {% if user.is_authenticated %}
         <img src="../logo.webp">,
         <div style="text-align: center">
-        <h1 style="left: 50%; right: 50%">Make Rule Change</h1>
+        <h1 style="left: 50%; right: 50%">Make Rule Change Request</h1>
         </div>
 
         <form action="{% url 'logout' %}?next=/" method = "post">
@@ -28,5 +28,20 @@
             <a href="../viewapprovedchanges">View Approved Rule Changes</a>
         </button>
         </div>
+
+        <div style = "position: relative; left: 25%; top: 40%">
+                <select>
+                        <option selected disabled ="true">-- Categories --</option>
+                        {% for category in Category %}
+                        <option>{{category.name}}</option>
+                        {% endfor %}
+                </select>
+
+        </div>
+        <div style = "position: relative; left: 25%; top: 60%">
+
+        <input type="submit" value="Submit" class ="btn-btn-secondary">
+
+         </div>
 
 {% endif %}

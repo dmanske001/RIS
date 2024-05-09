@@ -8,7 +8,10 @@ STATUSES = (
     ('pending', 'PENDING'),
     ('approved', 'APPROVED'),
     ('declined', 'DECLINED'),
+    ('implemented', 'IMPLEMENTED'),
 )
+
+
 
 class Category(models.Model):
     name = models.CharField(max_length = 50)
@@ -40,7 +43,7 @@ class Rule_Change(models.Model):
     date_created = models.DateField(blank=False, auto_now_add=False, default=None, null=True)
     date_decided = models.DateField(blank=True, auto_now_add=False, default=None, null=True)
     rule_description = models.CharField(max_length=200, default=None, null=True)
-    rule_status = models.CharField(max_length=8, choices=STATUSES, default='pending', null=True)
+    rule_status = models.CharField(max_length=15, choices=STATUSES, default='pending', null=True)
 
     class Meta:
         verbose_name = "rule change"

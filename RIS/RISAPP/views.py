@@ -4,6 +4,10 @@ from .models import Category, Rule, Rule_Change
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import redirect
 from django.contrib.auth import logout as logouts
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from .forms import Make_Rule_Change_Form
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -14,7 +18,9 @@ def home(request):
     return render(request, "RISAPP/home.html", {})
 
 def make_rule_change(request):
-    return render(request, "RISAPP/makerulechange.html", {})
+    displaycategories = Category.objects.all()
+    return render(request, "RISAPP/makerulechange.html", {"Category":displaycategories})
+
 
 def view_approved_rule_changes(request):
     return render(request, "RISAPP/viewapprovedchanges.html", {})
@@ -27,6 +33,9 @@ def logout(request):
     if request.method == 'POST':
         logouts(request)
         return redirect('')
+
+
+
 
 
 
