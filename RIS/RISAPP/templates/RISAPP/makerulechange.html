@@ -1,6 +1,7 @@
 <title>Make Rule Change</title>
 
 {% if user.is_authenticated %}
+
         <img src="../logo.webp">,
         <div style="text-align: center">
         <h1 style="left: 50%; right: 50%">Make Rule Change Request</h1>
@@ -10,7 +11,7 @@
             {% csrf_token %}
         <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
         </form>
-
+        {% if request.user.groups.all.0.name == "admin" %}
         <div style="text-align:left">
         <button type="button" style="position: absolute; background-color: grey; top: 25%; left: 25%; width: 100px; height: 100px">
             <a href="../home/">Home</a>
@@ -28,7 +29,32 @@
             <a href="../viewapprovedchanges">View Approved Rule Changes</a>
         </button>
         </div>
+        {% endif %}
 
+        {% if request.user.groups.all.0.name == "developer" %}
+
+        <div style="text-align:left">
+        <button type="button" style="position: absolute; background-color: grey; top: 25%; left: 40%; width: 100px; height: 100px">
+            <a href="../home/">Home</a>
+        </button>
+        </div>
+
+        <div style="text-align:right">
+        <button type="button" style="position: absolute; background-color: lightgreen; height: 100px; width: 100px; top: 25%; right: 40%">
+            <a href="../viewapprovedchanges">View Approved Rule Changes</a>
+        </button>
+        </div>
+        {% endif %}
+
+        {% if request.user.groups.all.0.name == "game tester" %}
+
+        <div style="text-align:center">
+        <button type="button" style="position: absolute; background-color: grey; top: 25%; left: 47%; right: 47%; width: 100px; height: 100px">
+            <a href="../home/">Home</a>
+        </button>
+        </div>
+
+        {% endif %}
         <div style = "position: relative; left: 45%; top: 30%">
 
                 <select>
@@ -44,5 +70,6 @@
         <input type="submit" value="Submit" class ="btn-btn-secondary">
 
          </div>
+
 
 {% endif %}

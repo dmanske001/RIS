@@ -1,6 +1,5 @@
 <title>View Approved Rule Changes</title>
 
-
 {% if user.is_authenticated %}
         <img src="../logo.webp">,
         <div style="text-align: center">
@@ -12,7 +11,9 @@
         <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
         </form>
 
-<div style="text-align:left">
+
+        {% if request.user.groups.all.0.name == "admin" %}
+        <div style="text-align:left">
         <button type="button" style="position: absolute; background-color: grey; top: 25%; left: 25%; width: 100px; height: 100px">
             <a href="../home/">Home</a>
         </button>
@@ -29,4 +30,24 @@
             <a href="../viewrulechanges">View Rule Change Requests</a>
         </button>
         </div>
+        {% endif %}
+
+        {% if request.user.groups.all.0.name == "developer" %}
+
+        <div style="text-align:left">
+        <button type="button" style="position: absolute; background-color: grey; top: 25%; left: 40%; width: 100px; height: 100px">
+            <a href="../home/">Home</a>
+        </button>
+        </div>
+
+        <div style="text-align:right">
+        <button type="button" style="position: absolute; background-color: lightblue; height: 100px; width: 100px; top: 25%; right: 40%">
+            <a href="../makerulechangerequest">Make Rule Change Request</a>
+        </button>
+        </div>
+        {% endif %}
+
+        {% if request.user.groups.all.0.name == "developer" %}
+
+        {% endif %}
 {% endif %}
