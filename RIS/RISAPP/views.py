@@ -20,9 +20,14 @@ def home(request):
 def make_rule_change(request):
     displaycategories = Category.objects.all()
     displayrules = Rule.objects.all()
+    form = Make_Rule_Change_Form()
+    if request.method == "POST":
+        form = Make_Rule_Change_Form(request.POST)
+        if form.is_valid():
+            form.save()
 
 
-    return render(request, "RISAPP/makerulechange.html", {"Category":displaycategories, "Rule":displayrules, "loggeduser": request.user.username})
+    return render(request, "RISAPP/makerulechange.html", {"Category":displaycategories, "Rule":displayrules, "loggeduser": request.user.username, "form": form})
 
 
 def view_approved_rule_changes(request):

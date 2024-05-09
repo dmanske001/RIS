@@ -55,24 +55,33 @@
         </div>
 
         {% endif %}
-        <div style = "position: relative; left: 45%; top: 30%">
 
-                <select>
-                        <option selected disabled ="true">-- Categories --</option>
-                        {% for category in Category %}
-                        <option>{{category.name}}</option>
-                        {% endfor %}}
-                </select>
-
-        </div>
-        <div style = "position: relative; left: 45%; top: 35%">
-
-        <input type="submit" value="Submit" class ="btn-btn-secondary">
-
-         </div>
 <br>
                 <h3>
                 {{loggeduser}}</h3>
+
+<div style = "position: relative; left: 45%; top: 30%">
+
+<form action="" method = "POST" id="my_form">
+        Make Rule Change Request
+        <br>
+        <br>
+        {% csrf_token %}
+        {% for field in form %}
+
+        <label class="form-label">{{field.label}}</label>
+
+        {{field}}
+        <br>
+        <br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Save" class ="btn btn-primary">
+</div>
+
+
+
+    </form>
 
 
 {% endif %}
