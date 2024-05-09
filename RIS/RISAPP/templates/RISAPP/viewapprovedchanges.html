@@ -30,6 +30,19 @@
             <a href="../viewrulechanges">View Rule Change Requests</a>
         </button>
         </div>
+        {% for rule_change in rulechangesdata %}
+                {% if rule_change.rule_status == 'approved' %}
+                <div style = "text-align: center; position: relative; top: 35%">
+                        {{ rule_change.category }}
+                        {{ rule_change.rule }}
+                        {{ rule_change.user }}
+                        {{ rule_change.date_created }}
+                        {{ rule_change.rule_description }}
+                        {{ rule_change.rule_status }}
+                </div>
+                {% endif %}
+        {% endfor %}
+
         {% endif %}
 
         {% if request.user.groups.all.0.name == "developer" %}
@@ -45,9 +58,22 @@
             <a href="../makerulechangerequest">Make Rule Change Request</a>
         </button>
         </div>
+
+        {% for rule_change in rulechangesdata %}
+                {% if rule_change.rule_status == 'approved' %}
+        <div style = "text-align: center; position: relative; top: 35%">
+                        {{ rule_change.category }}
+                        {{ rule_change.rule }}
+                        {{ rule_change.user }}
+                        {{ rule_change.date_created }}
+                        {{ rule_change.rule_description }}
+                        {{ rule_change.rule_status }}
+        </div>
+        {% endif %}}
+        {% endfor %}
         {% endif %}
 
-        {% if request.user.groups.all.0.name == "developer" %}
-
+        {% if request.user.groups.all.0.name == "game tester" %}
+        <h1>You are not authorized to view this page</h1>
         {% endif %}
 {% endif %}

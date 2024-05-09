@@ -25,7 +25,8 @@ def make_rule_change(request):
 
 
 def view_approved_rule_changes(request):
-    return render(request, "RISAPP/viewapprovedchanges.html", {})
+    rule_change = Rule_Change.objects.all()
+    return render(request, "RISAPP/viewapprovedchanges.html", {'rulechangesdata': rule_change})
 
 def view_rule_changes(request):
     rule_change = Rule_Change.objects.all()

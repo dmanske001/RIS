@@ -30,17 +30,16 @@
         </button>
         </div>
 
+
         {% for rule_change in rulechangesdata %}
-            <div>
-        <tr>
-                <td>{{ rule_change.category}}</td>
-                <td>{{ rule_change.rule}}</td>
-                <td>{{ rule_change.user}}</td>
-                <td>{{ rule_change.date_created}}</td>
-                <td>{{ rule_change.rule_description}}</td>
-                <td>{{ rule_change.rule_status}}</td>
-        </tr>
-            </div>
+<div style = "text-align: center; position: relative; top: 35%">
+                        {{ rule_change.category }}
+                        {{ rule_change.rule }}
+                        {{ rule_change.user }}
+                        {{ rule_change.date_created }}
+                        {{ rule_change.rule_description }}
+                        {{ rule_change.rule_status }}
+        </div>
         {% endfor %}
         {% else %}
         <h1>You are not authorized to view this page</h1>
