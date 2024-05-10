@@ -11,6 +11,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
+from django.contrib import messages
 
 
 
@@ -32,6 +33,8 @@ def make_rule_change(request):
         if form.is_valid():
 
             form.save()
+            messages.success(request, "New rule change has been added to database.")
+            form = Make_Rule_Change_Form()
 
     return render(request, "RISAPP/makerulechange.html", {"Category":displaycategories, "Rule":displayrules, "loggeduser": request.user.username, "form": form})
 

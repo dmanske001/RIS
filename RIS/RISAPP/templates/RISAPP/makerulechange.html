@@ -57,8 +57,7 @@
         {% endif %}
 
 <br>
-                <h3>
-                {{loggeduser}}</h3>
+
 
 <div style = "position: relative; left: 45%; top: 30%">
 
@@ -79,6 +78,13 @@
         <input type="submit" value="Save" class ="btn btn-primary">
 
     </form>
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
 </div>
 
 {% endif %}
