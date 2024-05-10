@@ -1,9 +1,10 @@
 <title>View Rule Change</title>
 
+
     {% if user.is_authenticated %}
-        <img src="../logo.webp">,
+
         <div style="text-align: center">
-        <h1 style="position: absolute; left: 45%; right: 45%">Home</h1>
+        <h1 style="position: absolute; left: 45%; right: 45%">View Rule Change</h1>
         </div>
 
         <form action="{% url 'logout' %}?next=/" method = "post">
@@ -12,11 +13,17 @@
         </form>
 
         {% if request.user.groups.all.0.name == "admin" %}
-hello
+<div style = "position: relative; left: 45%; top: 30%">
+    <form action="" method=POST>
+        {% csrf_token %}
+        {{ form.as_p }}
 
-<h1>Update Status</h1>
+        <input type="submit" value="Update" class ="btn btn-secondary">
+</div>
+
+
 <br>
-{{ rule_change_id }}
+
 
 {% endif %}
 {% endif %}
