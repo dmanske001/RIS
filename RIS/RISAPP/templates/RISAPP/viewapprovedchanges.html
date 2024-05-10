@@ -12,6 +12,7 @@
 <title>View Approved Rule Changes</title>
 
 {% if user.is_authenticated %}
+    {% if request.user.groups.all.0.name == "admin" or request.user.groups.all.0.name == "developer" %}
         <img src="../logo.webp">,
         <div style="text-align: center">
         <h1 style="left: 50%; right: 50%">View Approved Rule Changes</h1>
@@ -21,6 +22,7 @@
             {% csrf_token %}
         <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
         </form>
+
 
 
         {% if request.user.groups.all.0.name == "admin" %}
@@ -88,22 +90,43 @@
         </button>
         </div>
 
+<div style = "position: absolute; top: 45%; left: 35%; right: 35%">
+
+            <table>
+            <center>
+        <h2>Approved Rule Changes</h2>
+            </center>
+        <tr>
+            <th>Category</th>
+            <th>Rule</th>
+            <th>Date Created</th>
+            <th>Rule Description</th>
+            <th>Rule Status</th>
+        </tr>
+
         {% for rule_change in rulechangesdata %}
                 {% if rule_change.rule_status == 'approved' %}
-        <div style = "text-align: center; position: relative; top: 35%">
-                        {{ rule_change.category }}
-                        {{ rule_change.rule }}
-                        {{ rule_change.user }}
-                        {{ rule_change.date_created }}
-                        {{ rule_change.rule_description }}
-                        {{ rule_change.rule_status }}
+<tr>
+                        <td>{{ rule_change.category }}</td>
+                        <td>{{ rule_change.rule }}</td>
+                        <td>{{ rule_change.date_created }}</td>
+                        <td>{{ rule_change.rule_description }}</td>
+                        <td>{{ rule_change.rule_status }}</td>
 
-        </div>
-        {% endif %}}
+    <td><button type="button"><a href="{% url 'viewapprovedrulechange' rule_change.id %}"> Update Status</a></button></td>
+
+</tr>
+                {% endif %}
+            </table>
         {% endfor %}
+</div>
         {% endif %}
 
-        {% if request.user.groups.all.0.name == "game tester" %}
-        <h1>You are not authorized to view this page</h1>
         {% endif %}
+    {% else %}
+    <h1>You are not authorized to view this page</h1>
 {% endif %}
+
+
+
+

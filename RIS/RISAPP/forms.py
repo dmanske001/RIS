@@ -14,6 +14,7 @@ class Make_Rule_Change_Form(forms.ModelForm):
         super(Make_Rule_Change_Form, self).__init__(*args, **kwargs)
 
         self.fields['category'].queryset = self.fields['category'].queryset.order_by('name')
+        self.fields['rule'].queryset = self.fields['rule'].queryset.order_by('name')
 
 
 class Change_Status_Form(forms.ModelForm):

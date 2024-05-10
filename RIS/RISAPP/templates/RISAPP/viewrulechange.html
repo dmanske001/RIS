@@ -2,7 +2,7 @@
 
 
     {% if user.is_authenticated %}
-
+        {% if request.user.groups.all.0.name == "admin" %}
         <div style="text-align: center">
         <h1 style="position: absolute; left: 45%; right: 45%">View Rule Change</h1>
         </div>
@@ -16,7 +16,7 @@
             <a href="{% url 'viewrulechanges' %}">Back</a>
         </button>
 
-        {% if request.user.groups.all.0.name == "admin" %}
+
 <div style = "position: relative; left: 45%; top: 30%">
     <form action="" method=POST>
         {% csrf_token %}
@@ -36,9 +36,8 @@
         <input type="submit" value="Update" class ="btn btn-secondary">
 </div>
 
-
 <br>
-
-
+{% else %}
+<h1>You are not authorized to view this page</h1>
 {% endif %}
 {% endif %}

@@ -2,7 +2,7 @@
 
 
     {% if user.is_authenticated %}
-
+        {% if request.user.groups.all.0.name == "admin" or request.user.groups.all.0.name == "developer" %}
         <div style="text-align: center">
         <h1 style="position: absolute; left: 45%; right: 45%">View Approved Rule Change</h1>
         </div>
@@ -54,5 +54,8 @@
 <br>
 
 
+{% endif %}
+{% else %}
+<h1>You are not authorized to view this page</h1>
 {% endif %}
 {% endif %}
