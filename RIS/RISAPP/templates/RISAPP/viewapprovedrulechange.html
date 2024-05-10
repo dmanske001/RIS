@@ -16,6 +16,19 @@
 <div style = "position: relative; left: 45%; top: 30%">
     <form action="" method=POST>
         {% csrf_token %}
+        Category: {{ rule_change_id.category}}
+        <br>
+        <br>
+        Rule: {{ rule_change_id.rule}}
+        <br>
+        <br>
+        Date Created: {{ rule_change_id.date_created}}
+        <br>
+        <br>
+        Date Decided: {{ rule_change_id.date_decided}}
+        <br>
+        <br>
+        Rule Change Information: {{ rule_change_id.rule_description}}
         {{ form.as_p }}
         {{ date_decided }}
 

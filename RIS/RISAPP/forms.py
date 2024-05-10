@@ -17,12 +17,14 @@ class Change_Status_Form(forms.ModelForm):
     class Meta:
         model = Rule_Change
         fields = '__all__'
+        exclude = ('category', 'date_created', 'rule', 'rule_description', 'date_decided' )
 
 
 class Change_Status_Form_Dev(forms.ModelForm):
     class Meta:
         model = Rule_Change
         fields = '__all__'
+        exclude = ('category', 'date_created', 'rule', 'rule_description', 'date_decided')
 
 
 

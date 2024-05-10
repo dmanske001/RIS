@@ -30,9 +30,13 @@
             <a href="{% url 'viewrulechanges' %}">View Rule Change Requests</a>
         </button>
         </div>
+        <div style = "text-align: center; position: relative; top: 35%">
+        Approved Rule Changes
+        <br>
+        <br>
         {% for rule_change in rulechangesdata %}
-                {% if rule_change.rule_status == 'approved' %}
-                <div style = "text-align: center; position: relative; top: 35%">
+                {% if rule_change.rule_status == 'approved' or rule_change.rule_status == 'implemented' %}
+
                         {{ rule_change.category }}
                         {{ rule_change.rule }}
                         {{ rule_change.user }}
