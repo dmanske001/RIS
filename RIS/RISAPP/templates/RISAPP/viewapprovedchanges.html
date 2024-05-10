@@ -35,7 +35,7 @@
         <br>
         <br>
         {% for rule_change in rulechangesdata %}
-                {% if rule_change.rule_status == 'approved' or rule_change.rule_status == 'implemented' %}
+                {% if rule_change.rule_status == 'approved' %}
 
                         {{ rule_change.category }}
                         {{ rule_change.rule }}
@@ -43,11 +43,14 @@
                         {{ rule_change.date_created }}
                         {{ rule_change.rule_description }}
                         {{ rule_change.rule_status }}
-                        <button type="button"><a href="{% url 'viewapprovedrulechange' rule_change.id %}"> Update Status</a></button>
-                </div>
-                {% endif %}
-        {% endfor %}
 
+                        <button type="button"><a href="{% url 'viewapprovedrulechange' rule_change.id %}"> Update Status</a></button>
+<br>
+                <br>
+                {% endif %}
+
+        {% endfor %}
+</div>
         {% endif %}
 
         {% if request.user.groups.all.0.name == "developer" %}
