@@ -39,6 +39,7 @@
                         {{ rule_change.date_created }}
                         {{ rule_change.rule_description }}
                         {{ rule_change.rule_status }}
+                        <button type="button"><a href="{% url 'viewapprovedrulechange' rule_change.id %}"> Update Status</a></button>
                 </div>
                 {% endif %}
         {% endfor %}

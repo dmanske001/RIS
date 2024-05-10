@@ -27,5 +27,5 @@ urlpatterns = [
     path('viewrulechanges/', views.view_rule_changes, name='viewrulechanges'),
     path('logout/', views.logout, name='logout'),
     path('viewrulechange/<rule_change_id>/', views.update_status, name='viewrulechange'),
-
+    path('viewapprovedrulechange/<rule_change_id>/', views.update_status_dev, name='viewapprovedrulechange')
 ]

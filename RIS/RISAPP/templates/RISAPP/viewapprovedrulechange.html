@@ -1,0 +1,30 @@
+<title>View Approved Rule Change</title>
+
+
+    {% if user.is_authenticated %}
+
+        <div style="text-align: center">
+        <h1 style="position: absolute; left: 45%; right: 45%">View Approved Rule Change</h1>
+        </div>
+
+        <form action="{% url 'logout' %}?next=/" method = "post">
+            {% csrf_token %}
+        <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
+        </form>
+
+        {% if request.user.groups.all.0.name == "admin" or request.user.groups.all.0.name == "developer" %}
+<div style = "position: relative; left: 45%; top: 30%">
+    <form action="" method=POST>
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ date_decided }}
+
+        <input type="submit" value="Update" class ="btn btn-secondary">
+</div>
+
+
+<br>
+
+
+{% endif %}
+{% endif %}

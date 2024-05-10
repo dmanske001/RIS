@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout as logouts
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import Make_Rule_Change_Form, Change_Rule_Status_Form, Change_Status_Form
+from .forms import Make_Rule_Change_Form, Change_Rule_Status_Form, Change_Status_Form, Change_Status_Form_Dev
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -29,6 +29,14 @@ def update_status(request, rule_change_id):
         form.save()
         return redirect('viewrulechanges')
     return render(request, 'RISAPP/viewrulechange.html', {"rule_change_id" : rule_change, "form": form})
+
+def update_status_dev(request, rule_change_id):
+    rule_change = Rule_Change.objects.get(pk=rule_change_id)
+    form = Change_Status_Form_Dev(request.POST or None, instance=rule_change)
+    if form.is_valid():
+        form.save()
+        return redirect('viewapprovedrulechanges')
+    return render(request, 'RISAPP/viewapprovedrulechange.html', {"rule_change_id" : rule_change, "form": form})
 
 def make_rule_change(request):
     displaycategories = Category.objects.all()
