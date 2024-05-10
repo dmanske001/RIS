@@ -30,24 +30,39 @@
         </button>
         </div>
 
-
-        {% for rule_change in rulechangesdata %}
 <div style = "text-align: center; position: relative; top: 35%">
+        <form action="" method = "POST" id="my_form2">
+        View Rule Change Requests
+        <br>
+        <br>
+        {% for rule_change in rulechangesdata %}
+
+
                         {{ rule_change.category }}
                         {{ rule_change.rule }}
                         {{ rule_change.user }}
                         {{ rule_change.date_created }}
                         {{ rule_change.rule_description }}
                         {{ rule_change.rule_status }}
-                        <select>
-                            <option>pending</option>
-                            <option>approve</option>
-                            <option>deny</option>
-                            <option>implement</option>
-                        </select>
-        </div>
+
+        {% csrf_token %}
+        {% for field in form %}
+        {{ field }}
+            <input type="submit" value="Save" class ="btn btn-primary">
+            <br>
+            <br>
+
         {% endfor %}
+
+
+
+
+        {% endfor %}
+<input type="submit" value="Save" class ="btn btn-primary">
+</form>
+</div>
         {% else %}
         <h1>You are not authorized to view this page</h1>
         {% endif %}
+
 {% endif %}
