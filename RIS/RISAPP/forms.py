@@ -8,7 +8,7 @@ class Make_Rule_Change_Form(forms.ModelForm):
     class Meta:
         model = Rule_Change
         fields = '__all__'
-        exclude = ('date_created', 'date_decided', 'rule_status')
+        exclude = ('date_created', 'date_decided', 'rule_status', 'user')
 
     def __init__(self, *args, **kwargs):
         super(Make_Rule_Change_Form, self).__init__(*args, **kwargs)
@@ -21,14 +21,14 @@ class Change_Status_Form(forms.ModelForm):
     class Meta:
         model = Rule_Change
         fields = '__all__'
-        exclude = ('category', 'date_created', 'rule', 'rule_description', 'date_decided' )
+        exclude = ('category', 'date_created', 'rule', 'rule_description', 'date_decided', 'user' )
 
 
 class Change_Status_Form_Dev(forms.ModelForm):
     class Meta:
         model = Rule_Change
         fields = '__all__'
-        exclude = ('category', 'date_created', 'rule', 'rule_description', 'date_decided',)
+        exclude = ('category', 'date_created', 'rule', 'rule_description', 'date_decided', 'user')
 
 
 

@@ -41,6 +41,7 @@ class Rule(models.Model):
 class Rule_Change(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None, blank=False, null=True)
     rule = models.ForeignKey(Rule, on_delete=models.CASCADE, default=None, blank=False, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, blank=True, null=True)
     date_created = models.DateField(blank=False, default=timezone.now, null=True)
     date_decided = models.DateField(blank=True, auto_now_add=True, null=True)
     rule_description = models.CharField(max_length=40, default=None, null=True)

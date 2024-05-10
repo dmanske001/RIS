@@ -52,7 +52,7 @@ def make_rule_change(request):
             return redirect('makerulechangerequest')
 
 
-    return render(request, "RISAPP/makerulechange.html", {"Category":displaycategories, "Rule":displayrules, "loggeduser": request.user.username, "form": form})
+    return render(request, "RISAPP/makerulechange.html", {"Category":displaycategories, "Rule":displayrules, "form": form})
 
 
 def view_approved_rule_changes(request):
@@ -61,7 +61,6 @@ def view_approved_rule_changes(request):
 
 def view_rule_changes(request):
     rule_change = Rule_Change.objects.all()
-
     form = Change_Rule_Status_Form
 
     if request.method == "POST":
