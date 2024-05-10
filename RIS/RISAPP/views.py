@@ -22,6 +22,10 @@ def login(request):
 def home(request):
     return render(request, "RISAPP/home.html", {})
 
+def update_status(request, rule_change_id):
+    rule_change = Rule_Change.objects.get(pk=rule_change_id)
+    return render(request, 'RISAPP/viewrulechange.html', {"rule_change_id" : rule_change})
+
 def make_rule_change(request):
     displaycategories = Category.objects.all()
     displayrules = Rule.objects.all()
@@ -45,6 +49,7 @@ def view_approved_rule_changes(request):
 
 def view_rule_changes(request):
     rule_change = Rule_Change.objects.all()
+
     form = Change_Rule_Status_Form
 
     if request.method == "POST":
@@ -53,6 +58,7 @@ def view_rule_changes(request):
 
             form.save()
     return render(request, "RISAPP/viewrulechanges.html", {'rulechangesdata': rule_change, "form": form})
+
 
 def logout(request):
     if request.method == 'POST':

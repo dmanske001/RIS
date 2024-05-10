@@ -10,9 +10,7 @@ STATUSES = (
     ('declined', 'DECLINED'),
     ('implemented', 'IMPLEMENTED'),
 )
-def get_user(request):
-    current_user = request.username
-    return current_user
+
 
 
 

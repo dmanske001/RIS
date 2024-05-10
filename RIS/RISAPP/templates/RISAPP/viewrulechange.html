@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<title>View Rule Change</title>
 
-</body>
-</html>
+    {% if user.is_authenticated %}
+        <img src="../logo.webp">,
+        <div style="text-align: center">
+        <h1 style="position: absolute; left: 45%; right: 45%">Home</h1>
+        </div>
+
+        <form action="{% url 'logout' %}?next=/" method = "post">
+            {% csrf_token %}
+        <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
+        </form>
+
+        {% if request.user.groups.all.0.name == "admin" %}
+hello
+
+<h1>Update Status</h1>
+<br>
+{{ rule_change_id }}
+
+{% endif %}
+{% endif %}
