@@ -1,3 +1,14 @@
+<head>
+    <style>
+      table, th, td {
+          border: 2px solid black;
+          padding: 10px;
+      }
+      table {
+          width: 50%
+      }
+    </style>
+</head>
 <title>View Rule Changes</title>
 
 {% if user.is_authenticated %}
@@ -30,28 +41,40 @@
         </button>
         </div>
 
-<div style = "text-align: center; position: relative; top: 35%">
-        Rule Change Requests
-        <br>
-        <br>
-        {% for rule_change in rulechangesdata %}
+<div style =  "position: absolute; top: 45%; left: 35%; right: 35%">
 
-                        {{ rule_change.category }}
-                        {{ rule_change.rule }}
-                        {{ rule_change.user }}
-                        {{ rule_change.date_created }}
-                        {{ rule_change.rule_description }}
-                        {{ rule_change.rule_status }}
-<button type="button"><a href="{% url 'viewrulechange' rule_change.id %}"> Update Status</a></button>
-            <br>
-            <br>
+        <table>
+            <center>
+        <h2>Rule Change Requests</h2>
+            </center>
+        <tr>
+            <th>Category</th>
+            <th>Rule</th>
+            <th>Date Created</th>
+            <th>Rule Description</th>
+            <th>Rule Status</th>
+        </tr>
+
+
+    {% for rule_change in rulechangesdata %}
+    <tr>
+                        <td>{{ rule_change.category }}</td>
+                        <td>{{ rule_change.rule }}</td>
+                        <td>{{ rule_change.date_created }}</td>
+                        <td>{{ rule_change.rule_description }}</td>
+                        <td>{{ rule_change.rule_status }}</td>
+    <td><button type="button"><a href="{% url 'viewrulechange' rule_change.id %}">Update Status</a></button></td>
+
+    </tr>
+
+
 
         {% endfor %}
+        </table>
 
 </div>
-<br>
-<br>
-{{ rule_id }}
+
+
         {% else %}
         <h1>You are not authorized to view this page</h1>
         {% endif %}

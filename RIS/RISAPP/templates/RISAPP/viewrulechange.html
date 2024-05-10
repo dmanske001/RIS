@@ -12,6 +12,10 @@
         <button type = "submit" style="text-align:right; position: absolute; top: 5%; right: 5%;">Log Out</button>
         </form>
 
+<button type="button" style="position: absolute; top: 5%; text-align: left; left: 5%;">
+            <a href="{% url 'viewrulechanges' %}">Back</a>
+        </button>
+
         {% if request.user.groups.all.0.name == "admin" %}
 <div style = "position: relative; left: 45%; top: 30%">
     <form action="" method=POST>

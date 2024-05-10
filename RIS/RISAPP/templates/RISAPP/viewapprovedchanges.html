@@ -1,3 +1,14 @@
+<head>
+    <style>
+      table, th, td {
+          border: 2px solid black;
+          padding: 10px;
+      }
+      table {
+          width: 50%
+      }
+    </style>
+</head>
 <title>View Approved Rule Changes</title>
 
 {% if user.is_authenticated %}
@@ -30,25 +41,35 @@
             <a href="{% url 'viewrulechanges' %}">View Rule Change Requests</a>
         </button>
         </div>
-        <div style = "text-align: center; position: relative; top: 35%">
-        Approved Rule Changes
-        <br>
-        <br>
+
+        <div style = "position: absolute; top: 45%; left: 35%; right: 35%">
+
+            <table>
+            <center>
+        <h2>Approved Rule Changes</h2>
+            </center>
+        <tr>
+            <th>Category</th>
+            <th>Rule</th>
+            <th>Date Created</th>
+            <th>Rule Description</th>
+            <th>Rule Status</th>
+        </tr>
+
         {% for rule_change in rulechangesdata %}
                 {% if rule_change.rule_status == 'approved' %}
+<tr>
+                        <td>{{ rule_change.category }}</td>
+                        <td>{{ rule_change.rule }}</td>
+                        <td>{{ rule_change.date_created }}</td>
+                        <td>{{ rule_change.rule_description }}</td>
+                        <td>{{ rule_change.rule_status }}</td>
 
-                        {{ rule_change.category }}
-                        {{ rule_change.rule }}
-                        {{ rule_change.user }}
-                        {{ rule_change.date_created }}
-                        {{ rule_change.rule_description }}
-                        {{ rule_change.rule_status }}
+    <td><button type="button"><a href="{% url 'viewapprovedrulechange' rule_change.id %}"> Update Status</a></button></td>
 
-                        <button type="button"><a href="{% url 'viewapprovedrulechange' rule_change.id %}"> Update Status</a></button>
-<br>
-                <br>
+</tr>
                 {% endif %}
-
+            </table>
         {% endfor %}
 </div>
         {% endif %}

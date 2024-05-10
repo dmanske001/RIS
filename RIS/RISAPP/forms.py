@@ -29,8 +29,7 @@ class Change_Status_Form_Dev(forms.ModelForm):
         fields = '__all__'
         exclude = ('category', 'date_created', 'rule', 'rule_description', 'date_decided',)
 
-        def __init__(selfself, *args, **kwargs):
-            pass
+
 
 
 
