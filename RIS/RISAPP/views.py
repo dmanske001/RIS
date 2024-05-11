@@ -79,7 +79,10 @@ def logout(request):
         return redirect('')
 
 def getRules(request):
-    return JsonResponse("It is working", safe=False)
+    data = json.loads(request.body)
+    category_id = data["id"]
+    rules = Rule.objects.filter(category__id = category_id)
+    return JsonResponse(list(rules.values("id", "name")), safe=False)
 
 
 

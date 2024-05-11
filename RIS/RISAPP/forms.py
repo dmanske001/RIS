@@ -14,8 +14,16 @@ class Make_Rule_Change_Form(forms.ModelForm):
         super(Make_Rule_Change_Form, self).__init__(*args, **kwargs)
         self.fields['rule'].queryset = Rule.objects.none()
         self.fields['category'].queryset = self.fields['category'].queryset.order_by('name')
-        self.fields['rule'].queryset = self.fields['rule'].queryset.order_by('name')
 
+        if 'category' in self.data:
+            try:
+                category_id = int(self.data.get('category'))
+                self.fields['rule'].queryset = Rule.objects.filter(category_id=category_id).order_by('name')
+            except(ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['rule'].queryset = self.instance.category.rule.order_by('name')
+        self.fields['rule'].queryset = self.fields['rule'].queryset.order_by('name')
 
 class Change_Status_Form(forms.ModelForm):
     class Meta:

@@ -74,6 +74,7 @@
         <br>
         <br>
         {% endfor %}
+        {{form.error}}
 
         <input type="submit" value="Save" class ="btn btn-primary">
 
@@ -98,9 +99,9 @@
                 const csrftoken = getCookie('csrftoken');
 
 
-                let country_field = document.getElementById("id_category")
+                let category_field = document.getElementById("id_category")
                 let rule_field = document.getElementById("id_rule")
-                country_field.addEventListener("change", getCategoryId)
+                category_field.addEventListener("change", getCategoryId)
 
                 function getCategoryId(e){
                         console.log(e.target.value)
@@ -121,6 +122,10 @@
         .then(response => response.json())
         .then(data => {
         console.log('Success:', data);
+        rule_field.innerHTML = '<option value ="" selected="">------</option>'
+        for (let i = 0; i < data.length; i++){
+                rule_field.innerHTML += `<option value ="${data[i]["id"]}" selected="">${data[i]["name"]}</option>`
+        }
         })
         .catch((error) => {
         console.error('Error:', error);
