@@ -12,7 +12,7 @@ class Make_Rule_Change_Form(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(Make_Rule_Change_Form, self).__init__(*args, **kwargs)
-
+        self.fields['rule'].queryset = Rule.objects.none()
         self.fields['category'].queryset = self.fields['category'].queryset.order_by('name')
         self.fields['rule'].queryset = self.fields['rule'].queryset.order_by('name')
 

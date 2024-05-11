@@ -12,6 +12,8 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.contrib import messages
+from django.http import JsonResponse
+import json
 
 
 
@@ -75,6 +77,9 @@ def logout(request):
     if request.method == 'POST':
         logouts(request)
         return redirect('')
+
+def getRules(request):
+    return JsonResponse("It is working", safe=False)
 
 
 
